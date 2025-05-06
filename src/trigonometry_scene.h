@@ -1,6 +1,7 @@
 #pragma once
 #include "scene.h"
 
+
 class TrigonometryScene : public Scene
 {
 public:
@@ -14,6 +15,8 @@ public:
 	void Update() override;
 	void Draw() override;
 	void DrawGUI() override;
+
+
 
 private:
 
