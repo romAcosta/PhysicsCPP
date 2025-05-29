@@ -1,5 +1,6 @@
 #include "scene_camera.h"
 #include "rlgl.h"
+#include "aabb.h"
 
 void SceneCamera::BeginMode()
 {
@@ -39,4 +40,9 @@ Vector2 SceneCamera::ScreenToWorld(const Vector2& screen)
 Vector2 SceneCamera::WorldToScreen(const Vector2& world)
 {
 	return { world.x * m_ppu, world.y * m_ppu };
+}
+
+AABB SceneCamera::GetAABB()
+{
+	return AABB{ m_camera.target, {GetAspectRatio() * m_size * 2, m_size * 2} }; 
 }

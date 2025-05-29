@@ -26,6 +26,7 @@ void GUI::Draw()
 		GuiSlider(Rectangle{ anchor01.x + 72, anchor01.y + 204, 120, 16 }, "S-Damping", GUI_DATA(SpringDampingSliderValue), 0, 5);
 		GuiSlider(Rectangle{ anchor01.x + 72, anchor01.y + 224, 120, 16 }, "Stiffness", GUI_DATA(SpringStiffnessSliderValue), 1, 30);
 		GuiSlider(Rectangle{ anchor01.x + 72, anchor01.y + 244, 120, 16 }, "Stiffness", GUI_DATA(World::springStiffnessMultiplier), 1, 30);
+		GuiSlider(Rectangle{ anchor01.x + 72, anchor01.y + 320, 120, 16 }, "Gravitation", GUI_DATA(GravitationSliderValue), 0, 15);
 		if (GuiDropdownBox(Rectangle{ anchor01.x + 72, anchor01.y + 280, 120, 24 }, "Dynamic;Kinematic;Static", &DropdownBox006Active, DropdownBox006EditMode)) {
 
 			DropdownBox006EditMode = !DropdownBox006EditMode;

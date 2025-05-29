@@ -49,7 +49,7 @@ void World::Step(float timeStep)
 		spring->ApplyForce(springStiffnessMultiplier);
 	}
 
-	if(gravitation > 0) ApplyGravitation(m_bodies, 0.15f);
+	if(GUI::GravitationSliderValue > 0) ApplyGravitation(m_bodies, GUI::GravitationSliderValue);
 	for (auto body : m_bodies)
 	{
 		body->Step(timeStep);

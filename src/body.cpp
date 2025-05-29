@@ -2,6 +2,7 @@
 #include "raymath.h"
 #include "world.h"
 #include "Integrater.h"
+#include "aabb.h"
 
 
 void Body::Step(float dt)
@@ -26,4 +27,9 @@ void Body::Draw(const Scene& scene)
 void Body::ApplyForce(const Vector2& force)
 {
 	this->force += force;
+}
+
+AABB Body::GetAABB() const
+{
+	return AABB{ position, Vector2{ size * 2, size * 2 } }; 
 }

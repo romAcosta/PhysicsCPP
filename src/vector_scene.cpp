@@ -6,6 +6,7 @@
 #include "raymath.h"
 #include "raygui.h"
 #include <iostream>
+#include "aabb.h"
 
 
 
@@ -51,22 +52,6 @@ void VectorScene::Update()
 		body->gravityScale = GUI::ScaleSliderValue;
 		body->damping = GUI::DampingSliderValue;
 
-		if (body->position.y < -5)
-		{
-			body->position.y = -5;
-			body->velocity.y *= -body->restitution;
-		}
-
-		if (body->position.x < -9)
-		{
-			body->position.x = -9;
-			body->velocity.x *= -body->restitution;
-		}
-		if (body->position.x > 9)
-		{
-			body->position.x = 9;
-			body->velocity.x *= -body->restitution;
-		}
 
 		switch (GUI::DropdownBox006Active)
 		{
@@ -82,6 +67,41 @@ void VectorScene::Update()
 
 		default:
 			break;
+		}
+	}
+
+	for (auto body : m_world->GetBodies())
+	{
+		AABB aabb = body->GetAABB();
+		AABB worldAABB = m_camera->GetAABB();
+
+		if ((aabb.min().y) < worldAABB.min().y)
+		{
+			float overlap = (worldAABB.min().y - aabb.min().y); // calculate how far the body has penetrated beyond the world boundary
+			body->position.y += 2 * overlap; // move the body back inside the world bounds
+			body->velocity.y *= -body->restitution; // multiple by -restituion to scale and flip velocity
+		}
+		else if ((aabb.max().y) > worldAABB.max().y)
+		{
+			float overlap = (worldAABB.max().y - aabb.max().y);  // calculate how far the body has penetrated beyond the world boundary
+			body->position.y += 2 * overlap; // move the body back inside the world bounds
+			body->velocity.y *= -body->restitution; // multiple by -restituion to scale and flip velocity
+		}
+
+		if ((aabb.min().x) < worldAABB.min().x)
+		{
+			
+			float overlap = (worldAABB.min().x - aabb.min().x); // calculate how far the body has penetrated beyond the world boundary
+			body->position.x += 2 * overlap; // move the body back inside the world bounds
+			body->velocity.x *= -body->restitution; // multiple by -restituion to scale and flip velocity
+			
+		}
+		else if (aabb.max().x > worldAABB.max().x)
+		{
+			
+			float overlap = (worldAABB.max().x - aabb.max().x);  // calculate how far the body has penetrated beyond the world boundary
+			body->position.x += 2 * overlap; // move the body back inside the world bounds
+			body->velocity.x *= -body->restitution; // multiple by -restituion to scale and flip velocity
 		}
 	}
 	

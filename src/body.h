@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "scene.h"
 
+
 class World;
 
 struct Body {
@@ -48,6 +49,8 @@ public:
 
 	Body* next{ nullptr };
 	Body* prev{ nullptr };
+
+	struct AABB GetAABB() const;
 
 public:
 	Type type{ Type::Dynamic };

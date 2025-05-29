@@ -23,6 +23,7 @@ public:
 	inline static float DampingSliderValue = 0.1f;
 	inline static float SpringDampingSliderValue = 0.1f;
 	inline static float SpringStiffnessSliderValue = 15.0f;
+	inline static float GravitationSliderValue = 0.15f;
 	inline static bool DropdownBox006EditMode = false;
 	inline static int DropdownBox006Active = 0;
 
