@@ -2,6 +2,7 @@
 #include "body.h"
 #include "gui.h"
 #include "gravitation.h"
+#include "collision.h"
 
 
 
@@ -55,6 +56,10 @@ void World::Step(float timeStep)
 		body->Step(timeStep);
 		body->ClearForce();
 	}
+
+	m_contacts.clear();
+	CreateContacts(m_bodies, m_contacts);
+	SeparateContacts(m_contacts);
 }
 
 void World::Draw(const Scene& scene) const
