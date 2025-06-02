@@ -31,6 +31,10 @@ void SpringScene::Update()
 	{
 		World::simulate = !World::simulate;
 	}
+	if (IsKeyPressed(KEY_BACKSPACE))
+	{
+		m_world->DestroyAll();
+	}
 
 	if ( !GUI::mouseOverGUI)
 	{
