@@ -19,7 +19,7 @@ public:
 	void Initialize(Vector2 gravity = Vector2 {0,-9.81f}, size_t poolSize = 30);
 
 	Body* CreatBody(const Vector2& position, float size, const Color& color);
-	Body* CreatBody(Body::Type type, const Vector2& position, float mass, float size, const Color& color);
+	Body* CreatBody(Body::Type type, const Vector2& position, float mass, float size, float restitution, const Color& color);
 
 	Spring* CreateSpring(Body* bodyA, Body* bodyB, float restLength, float stiffness, float damping);
 

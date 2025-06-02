@@ -51,6 +51,7 @@ void VectorScene::Update()
 		body->size = GUI::SizeSliderValue;
 		body->gravityScale = GUI::ScaleSliderValue;
 		body->damping = GUI::DampingSliderValue;
+		body->restitution = GUI::RestitutionSliderValue;
 
 
 		switch (GUI::DropdownBox006Active)

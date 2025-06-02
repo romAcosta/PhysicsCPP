@@ -36,7 +36,7 @@ void SpringScene::Update()
 	{
 		if (IsMouseButtonPressed(0)) {
 			auto body = m_world->CreatBody((Body::Type)GUI::DropdownBox006Active, m_camera->ScreenToWorld(GetMousePosition()),
-				GUI::MassSliderValue, GUI::SizeSliderValue, ColorFromHSV(randomf(360), 1, 1));
+				GUI::MassSliderValue, GUI::SizeSliderValue,GUI::RestitutionSliderValue, ColorFromHSV(randomf(360), 1, 1));
 
 		}
 

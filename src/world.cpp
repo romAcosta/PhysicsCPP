@@ -26,9 +26,9 @@ Body* World::CreatBody(const Vector2& position, float size, const Color& color)
     return body;
 }
 
-Body* World::CreatBody(Body::Type type, const Vector2& position, float mass, float size, const Color& color)
+Body* World::CreatBody(Body::Type type, const Vector2& position, float mass, float size,float restitution, const Color& color)
 {
-	Body* body = new Body(type,position, mass, size, color);
+	Body* body = new Body(type,position, mass, size,restitution, color);
 	
 	m_bodies.push_back(body);
 	return body;

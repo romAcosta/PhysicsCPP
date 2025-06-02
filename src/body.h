@@ -40,6 +40,18 @@ public:
 
 		invMass = (type == Type::Dynamic && mass != 0)? 1 / mass : 0;
 	}
+	
+	Body(Type type, const Vector2& pos,float mass, float s,float restitution, const Color& c) : // No Velocity
+		type{ type },
+		position{ pos },
+		mass{ mass },
+		size{ s },
+		restitution{restitution},
+		color{ c }
+	{
+
+		invMass = (type == Type::Dynamic && mass != 0)? 1 / mass : 0;
+	}
 
 
 	void Step(float dt);
